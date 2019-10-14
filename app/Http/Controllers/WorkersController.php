@@ -71,11 +71,7 @@ class WorkersController extends Controller
      */
     public function update(Request $request, Worker $worker)
     {
-        // $worker->update(request(['fname', 'mname', 'sname', 'age']));
-        $worker->fname = request['fname'];
-        $worker->mname = request['mname'];
-        $worker->sname = request['sname'];
-        $worker->save();
+        $worker->update(request()->all());
         return redirect("/workers/{$worker->id}");
     }
 
@@ -88,5 +84,6 @@ class WorkersController extends Controller
     public function destroy(Worker $worker)
     {
         Worker::destroy($worker->id);
+        return redirect("/workers");
     }
 }

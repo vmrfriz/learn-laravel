@@ -5,20 +5,30 @@
 @endsection
 
 @section('content')
-    <div class="mb-3">
-        <a href="javascript:history.go(-1)" class="btn btn-outline-primary">&lt; Назад</a>
-    </div>
-
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1 class="text-nowrap">{{ $worker->sname }} {{ $worker->fname }} {{ $worker->mname }} <a href="/workers/{{ $worker->id }}/edit" class="btn btn-outline-primary">ред.</a></h1>
-            <p>Дата рождения: {{ $worker->birthday }}</p>
+        <div class="col-md-4">
 
-            <form method="POST">
-                @method('DELETE')
-                @csrf
-                <button class="btn btn-outline-danger mt-5" type="submit">Удалить</button>
-            </form>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a href="/workers" class="nav-link bg-white border border-bottom-0" role="tab" aria-selected="true">&laquo; Назад</a>
+                </li>
+            </ul>
+
+            <div class="bg-white border border-top-0 p-3">
+                <h5 class="text-center border-bottom pb-3">{{ $worker->sname }} {{ $worker->fname }} {{ $worker->mname }}</h5>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td>День рождения</td>
+                            <td>{{ $worker->birthday }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <a href="/workers/{{ $worker->id }}/edit" class="btn btn-outline-secondary btn-sm">Редактировать</a>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
