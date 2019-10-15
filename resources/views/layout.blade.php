@@ -34,7 +34,31 @@
     </header>
 
     <div class="container py-4">
-        @yield('content', '<h1>Nothing here</h1>')
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                
+                <ul class="nav nav-tabs {{ trim($__env->yieldContent('back-link')) ? '' : 'nav-fill' }}" id="myTab" role="tablist">
+                    @hasSection('back-link')
+                    <li class="nav-item">
+                        <a href="@yield('back-link')" class="nav-link active" role="tab" aria-selected="true">&laquo; Назад</a>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a href="/accounts" class="nav-link {{ request()->is('accounts') ? 'active' : '' }}" role="tab" aria-selected="true">Аккаунты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/workers" class="nav-link {{ request()->is('workers') ? 'active' : '' }}" role="tab" aria-selected="true">Сотрудники</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/items" class="nav-link {{ request()->is('items') ? 'active' : '' }}" role="tab" aria-selected="true">Имущество</a>
+                    </li>
+                    @endif
+                </ul>
+
+                @yield('content', '<h1>Nothing here</h1>')
+
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
