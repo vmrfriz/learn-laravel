@@ -11,8 +11,16 @@
 |
 */
 
+// Auth
+Auth::routes([
+    'register' => false, // Disable registration
+]);
+
+// My routes
+Route::resource('/accounts', 'AccountsController');
 Route::resource('/workers', 'WorkersController');
 
+// Default route
 Route::get('/', function () {
     return view('welcome');
 });

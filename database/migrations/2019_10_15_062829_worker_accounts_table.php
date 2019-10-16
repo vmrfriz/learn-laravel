@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkersTable extends Migration
+class WorkerAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateWorkersTable extends Migration
      */
     public function up()
     {
-        Schema::create('workers', function (Blueprint $table) {
+        Schema::create('workers_accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('fname');
-            $table->string('mname')->nullable();
-            $table->string('sname');
-            $table->date('birthday')->nullable();
+            $table->bigInteger('worker_id')->references('id')->on('workers')->onDelete('cascade');
+            $table->bigInteger('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateWorkersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workers');
+        Schema::dropIfExists('workers_accounts');
     }
 }

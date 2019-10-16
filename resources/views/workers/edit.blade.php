@@ -4,13 +4,11 @@
     Редактирование {{ $worker->sname }} {{ $worker->fname }} {{ $worker->mname }}
 @endsection
 
-@section('content')
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a href="/workers/{{ $worker->id }}" class="nav-link bg-white border border-bottom-0" role="tab" aria-selected="true">&laquo; Назад</a>
-        </li>
-    </ul>
+@section('back-link')
+    /workers/{{ $worker->id }}
+@endsection
 
+@section('content')
     <div class="bg-white border border-top-0 p-3">
         <h5 class="text-center border-bottom pb-3">Редактирование: {{ $worker->sname }} {{ $worker->fname }} {{ $worker->mname }}</h5>
         <form method="POST" action="/workers/{{ $worker->id }}" id="saveform" class="mb-4">
@@ -18,11 +16,11 @@
             @csrf
             <div class="form-group">
                 <label for="formGroupExampleInput2">Фамилия</label>
-                <input class="form-control" type="text" name="sname" value="{{ $worker->sname }}">
+                <input class="form-control" type="text" name="sname" value="{{ $worker->sname }}"  required>
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Имя</label>
-                <input class="form-control" type="text" name="fname" value="{{ $worker->fname }}">
+                <input class="form-control" type="text" name="fname" value="{{ $worker->fname }}"  required>
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Отчетство</label>
